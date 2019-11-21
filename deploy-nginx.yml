@@ -1,0 +1,8 @@
+---
+- hosts: client-2
+  tasks:
+    - name: "Deploy Website"
+      become: true
+      synchronize:
+        dest: /var/www/html
+        src: ../nginx-web/

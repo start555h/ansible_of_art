@@ -1,0 +1,27 @@
+---
+- hosts: client-2
+  tasks:
+    - name: "Install NginX"
+      apt:
+        name: nginx
+        state: present
+
+    - name: "Start Nginx Services"
+      service:
+        name: nginx
+        state: started
+
+    - name: "Deploy Website"
+      become: true
+      synchronize:
+        dest: /var/www/html
+        src: ../nginx-web/
+
+    - name: "Set Directory Owner"
+      become: true
+      file:
+        dest: /var/www/html
+        owner: www-data
+        group: www-data
+        mode: 0755
+        recurse: yes

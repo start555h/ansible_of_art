@@ -1,0 +1,8 @@
+---
+- hosts: all
+  become: true
+  tasks:
+   - debug: msg="hello world"
+  roles:
+   - { role: adriagalin.motd }
+

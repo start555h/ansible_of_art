@@ -1,0 +1,8 @@
+---
+- hosts: client-1
+  tasks:
+    - name: "Deploy Website"
+      become: true
+      synchronize:
+        dest: /var/www/vhosts/demo
+        src: ../apache-web/
